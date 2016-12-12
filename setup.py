@@ -6,6 +6,7 @@ setup(name='reb_parser',
     author="Liviu Manea",
     url="https://github.com/mlmarius/reb_parser",
     license="MIT",
+    requires='pytz',
     packages=['reb_parser'],
     zip_safe=False
 )
