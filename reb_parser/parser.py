@@ -4,12 +4,20 @@
 Parse a buffer of text containing a reb file into reb objects
 '''
 
-from collections import deque, OrderedDict
+from collections import deque
 from model import *
 import re
 from datetime import datetime
 import pytz
 import json
+import logging
+
+logger = logging.getLogger('rebparser')
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger.addHandler(handler)
+handler.setFormatter(formatter)
+logger.setLevel(logging.DEBUG)
 
 class RebFile(Reb):
     """Parse a rebfile containing a single REB"""
@@ -41,7 +49,7 @@ class RebFile(Reb):
         try:
             self.parse()
         except IndexError:
-            print "bulletin parsing complete"
+            logger.debug("bulletin parsing complete")
             return
 
     def parse(self):
@@ -53,13 +61,13 @@ class RebFile(Reb):
         while len(self.lines):
             for parser in self.parserStack:
                 self.runparser(parser)
-            print "###############  Parsers exhausted. Removing a line from lines  #################"
+            logger.info("Parsers exhausted. Removing a line from lines")
             self.lines.popleft()
 
 
     def runparser(self, parser):
         status = "[% 30s] - %s" % (parser.__name__, self.lines[0])
-        print status
+        logger.debug(status)
         while parser(self.lines[0]) is True:
             self.lines.popleft()
             # print "parser succeeded!"
@@ -171,8 +179,6 @@ class RebFile(Reb):
         arrival.magnitude_val = line[110:115].strip()
         arrival.id = line[115:].strip()
 
-        print arrival.magnitude_type, arrival.magnitude_val, arrival.id
-
         if arrival.phase not in 'SP':
             #not a bad line maybe but not a good phase. we let the parser continue
             return True
@@ -187,9 +193,3 @@ class RebFile(Reb):
         self.origin.arrivals.append(arrival)
         return True
 
-if __name__ == "__main__":
-    print "runing test"
-    rf = RebFile('testdata/2015198_10_16_38')
-    print rf.toDict()
-    print "\n\n\n"
-    print rf.raw
