@@ -1,0 +1,26 @@
+
+Antelope Linux_a2  REB - Event       12  Transilvania, judetul Alba                                      Op: Daniel Paulescu     
+Date          Time        Err   RMS Latitude Longitude  Smaj  Smin  Az Depth   Err Ndef Nsta Gap  mdist  Mdist Qual   Author      OrigID
+2015/07/17 10:16:38.32   0.14  0.26  46.4907   22.7675   1.6   1.0 114   4.1   1.9   15    9  98   0.30   1.90 m i ke NIEP:rt m       37
+
+
+Magnitude   Err Nsta Author      OrigID
+ml   1.4  0.40     5 dbevproc        37
+
+
+Sta     Dist  EvAz Phase        Time      TRes  Azim AzRes   Slow   SRes Def   SNR       Amp   Per Qual Magnitude    ArrID
+DRGR    0.30 352.7 P        10:16:44.471   0.2                           T__             0.1       mc_ ml      1.3       57
+DRGR    0.30 352.7 S        10:16:48.648   0.0                           T__             0.1       mc_ ml      1.3       58
+DEV     0.61 171.4 P        10:16:49.987  -0.1                           T__                       md_                   83
+CJR     0.61  68.4 P        10:16:50.084  -0.1                           T__                       md_                   84
+MESR    0.67  10.6 P        10:16:50.924  -0.3                           T__             0.2       md_ ml      2.1       85
+SIRR    0.79 253.9 P        10:16:53.929   0.3                           T__                       md_ ml      1.3       81
+GZR     1.10 179.7 P        10:16:58.990  -0.5                           T__                       mc_ ml      1.7       59
+BZS     1.17 222.3 P        10:17:00.551  -0.3                           T__                       mc_ ml      1.4       55
+SIRR    0.79 253.9 S        10:17:04.675  -0.1                           T__                       md_ ml      1.3       82
+HERR    1.63 188.8 P        10:17:07.911   0.1                           T__                       md_                   86
+VOIR    1.90 122.8 P        10:17:12.138   0.4                           T__                       mc_                   64
+GZR     1.10 179.7 S        10:17:15.136   0.3                           T__                       mc_ ml      1.7       60
+BZS     1.17 222.3 S        10:17:17.317   0.2                           T__                       mc_ ml      1.4       56
+HERR    1.63 188.8 S        10:17:29.753  -0.4                           T__                       mc_                   87
+VOIR    1.90 122.8 S        10:17:37.181   0.0                           T__                       md_                   65
