@@ -115,11 +115,8 @@ class RebFile(Reb):
         self.origin.lat = latitude
         self.origin.lon = longitude
         self.origin.depth = depth
-
-        # print dt.strftime('%Y-%m-%d %H:%M:%S.%f')
-        
         self.origin.time_err = line[22:30].strip()
-        self.origin.rms = line[30:36].strip()
+        self.origin.rms = float(line[30:36].strip())
         self.origin.smaj = line[54:61].strip()
         self.origin.smin = line[61:66].strip()
         self.origin.az = line[66:70].strip()
@@ -150,7 +147,7 @@ class RebFile(Reb):
         mag.type = magType
         mag.val =  magVal
         mag.err = line[10:16].strip()
-        mag.nsta = line[16:20].strip()
+        mag.nsta = int(line[16:20].strip())
         mag.author = line[20:31].strip()
         self.origin.magnitudes.append(mag)
         return True
@@ -171,12 +168,12 @@ class RebFile(Reb):
         arrival.dist = float(line[5:12])
         arrival.evAz = float(line[13:18])
         arrival.phase = line[19:21].strip()
-        arrival.t_res = line[40:46].strip()
+        arrival.t_res = float(line[40:46].strip())
         arrival.the_def = line[72:76].strip()
-        arrival.amp = line[88:92].strip()
+        arrival.amp = float(line[88:92].strip())
         arrival.qual = line[98:102].strip()
         arrival.magnitude_type = line[102:106].strip()
-        arrival.magnitude_val = line[110:115].strip()
+        arrival.magnitude_val = float(line[110:115].strip())
         arrival.id = line[115:].strip()
 
         if arrival.phase not in 'SP':
