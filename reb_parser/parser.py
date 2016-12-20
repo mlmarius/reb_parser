@@ -15,11 +15,11 @@ import logging
 
 
 logger = logging.getLogger('rebparser')
-handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger.addHandler(handler)
-handler.setFormatter(formatter)
-logger.setLevel(logging.DEBUG)
+# handler = logging.StreamHandler()
+# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# logger.addHandler(handler)
+# handler.setFormatter(formatter)
+# logger.setLevel(logging.DEBUG)
 
 class RebFile(Reb):
     """Parse a rebfile containing a single REB"""
