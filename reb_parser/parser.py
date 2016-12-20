@@ -12,6 +12,8 @@ import pytz
 import json
 import logging
 
+
+
 logger = logging.getLogger('rebparser')
 handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -170,10 +172,10 @@ class RebFile(Reb):
         arrival.phase = line[19:21].strip()
         arrival.t_res = float(line[40:46].strip())
         arrival.the_def = line[72:76].strip()
-        arrival.amp = float(line[88:92].strip())
+        arrival.amp = line[88:92].strip()
         arrival.qual = line[98:102].strip()
         arrival.magnitude_type = line[102:106].strip()
-        arrival.magnitude_val = float(line[110:115].strip())
+        arrival.magnitude_val = line[110:115].strip()
         arrival.id = line[115:].strip()
 
         if arrival.phase not in 'SP':
