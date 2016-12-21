@@ -3,7 +3,7 @@ class Reb(object):
     def __init__(self):
         self.created_by = None      # Name of computer that created this reb, if available
         self.source_path = None     # Path where the reb was initially saved
-        self.operator = None        # Operator name
+        self.op = None        # Operator name
 
         self.event_id = None
         self.raw = None             # Raw contents of reb file
