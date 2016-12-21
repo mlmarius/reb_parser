@@ -52,6 +52,7 @@ class RebFile(Reb):
             self.parse()
         except IndexError:
             logger.debug("bulletin parsing complete")
+            print self.operator
             return
 
     def parse(self):
@@ -80,12 +81,19 @@ class RebFile(Reb):
         # Antelope Linux_a2  REB - Event       12  Transilvania, judetul Alba                                      Op: Daniel Paulescu•••••
         if "REB - Event" not in line:
             return False
-        id_region, operator = map(str.strip, line.split('REB - Event')[1].split('Op: '))
+
+        try:
+            id_region, op = map(str.strip, line.split('REB - Event')[1].split('Op: '))
+        except ValueError:
+            # sometimes rebs have no operator
+            id_region = line.split('REB - Event')[1].strip()
+            op = None
+
         id_region = re.sub(r'\s+',' ', id_region).strip().split(' ')
         event_id = id_region[0]
         region = ' '.join(id_region[1:]).strip()
         self.event_id = event_id
-        self.operator = operator
+        self.op = op
         self.origin = Origin()
         self.origin.region = region
         return True
@@ -167,10 +175,10 @@ class RebFile(Reb):
 
         arrival = Arrival()
         arrival.sta = line[0:5].strip()
-        arrival.dist = float(line[5:12])
-        arrival.evAz = float(line[13:18])
+        arrival.dist = line[5:12].strip()
+        arrival.evAz = line[13:18].strip()
         arrival.phase = line[19:21].strip()
-        arrival.t_res = float(line[40:46].strip())
+        arrival.t_res = line[40:46].strip()
         arrival.the_def = line[72:76].strip()
         arrival.amp = line[88:92].strip()
         arrival.qual = line[98:102].strip()
