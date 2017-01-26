@@ -52,7 +52,6 @@ class RebFile(Reb):
             self.parse()
         except IndexError:
             logger.debug("bulletin parsing complete")
-            print self.operator
             return
 
     def parse(self):
