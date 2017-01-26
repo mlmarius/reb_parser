@@ -3,7 +3,7 @@ class Reb(object):
     def __init__(self):
         self.created_by = None      # Name of computer that created this reb, if available
         self.source_path = None     # Path where the reb was initially saved
-        self.op = None        # Operator name
+        self.operator = None        # Operator name
 
         self.event_id = None
         self.raw = None             # Raw contents of reb file
@@ -11,7 +11,7 @@ class Reb(object):
         self.origin = Origin()
 
     def toDict(self):
-        out = dict((k,self.__dict__[k]) for k in ['created_by','source_path', 'op',
+        out = dict((k,self.__dict__[k]) for k in ['created_by','source_path', 'operator',
             'event_id', 'raw'])
         out['origin'] = self.origin.toDict()
         return out
