@@ -11,7 +11,7 @@ class Reb(object):
         self.origin = Origin()
 
     def toDict(self):
-        out = dict((k,self.__dict__[k]) for k in ['created_by','source_path', 'operator',
+        out = dict((k,self.__dict__[k]) for k in ['created_by','source_path', 'op',
             'event_id', 'raw'])
         out['origin'] = self.origin.toDict()
         return out
