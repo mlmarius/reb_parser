@@ -88,14 +88,12 @@ class RebFile(Reb):
             # sometimes rebs have no operator
             id_region = line.split('REB - Event')[1].strip()
             op = None
-
-        print op
             
         id_region = re.sub(r'\s+',' ', id_region).strip().split(' ')
         event_id = id_region[0]
         region = ' '.join(id_region[1:]).strip()
         self.event_id = event_id
-        self.op = op
+        self.operator = op
         self.origin = Origin()
         self.origin.region = region
         return True
